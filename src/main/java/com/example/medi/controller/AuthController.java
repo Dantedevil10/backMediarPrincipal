@@ -13,6 +13,7 @@ import com.example.medi.repository.UsuariosRepository;
 import com.example.medi.repository.MediadoresRepository;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/auth")
 public class AuthController {
 

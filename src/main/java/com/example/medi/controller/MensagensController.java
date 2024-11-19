@@ -19,6 +19,7 @@ import com.example.medi.services.MensagensService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/mensagens")
 public class MensagensController {
 

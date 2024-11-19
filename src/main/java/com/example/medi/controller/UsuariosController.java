@@ -24,6 +24,7 @@ import com.example.medi.repository.UsuariosRepository;
 import com.example.medi.services.UsuariosService;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/userCom")
 public class UsuariosController {
 

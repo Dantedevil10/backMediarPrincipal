@@ -23,6 +23,7 @@ import com.example.medi.services.MediadoresService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/userMedi")
 public class MediadoresController {
 
