@@ -22,7 +22,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/processos")
-@CrossOrigin(origins = "http://localhost:4200")
 public class ProcessosController {
 
     @Autowired

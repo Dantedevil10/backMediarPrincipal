@@ -25,7 +25,6 @@ import com.example.medi.services.UsuariosService;
 
 @RestController
 @RequestMapping("/userCom")
-@CrossOrigin(origins = "http://localhost:4200")
 public class UsuariosController {
 
     @Autowired
