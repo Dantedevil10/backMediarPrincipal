@@ -37,7 +37,7 @@ public class Usuarios extends ParticipanteBase {
     @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String nomeUsuario;
 
     @Column(nullable = false)
