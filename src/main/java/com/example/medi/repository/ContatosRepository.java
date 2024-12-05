@@ -16,4 +16,7 @@ public interface ContatosRepository extends JpaRepository<Contatos, Long> {
 
     // Método para buscar contatos por usuário
     List<Contatos> findByUsuario(ParticipanteBase usuario);
+
+     // Método para buscar contatos onde o usuário é o destinatário
+     List<Contatos> findByContato(ParticipanteBase contato);
 }

@@ -3,6 +3,7 @@ package com.example.medi.models;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -56,7 +57,7 @@ public class Mediadores extends ParticipanteBase {
     @Column(nullable = false)
     private String tipoDeConta = "MEDIADOR";
 
-    @OneToMany(mappedBy = "mediadorEscolhido")
+    @OneToMany(mappedBy = "mediadorEscolhido" , cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("mediadorEscolhido")
     private List<Processos> processosRecebidos;
 

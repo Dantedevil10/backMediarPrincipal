@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import com.example.medi.dto.MediadoresDTO;
 import com.example.medi.models.Mediadores;
-
+import com.example.medi.repository.ContatosRepository;
 import com.example.medi.repository.MediadoresRepository;
 import com.example.medi.repository.MensagensRepository;
 
@@ -21,6 +21,9 @@ public class MediadoresService {
 
     @Autowired
     private MensagensRepository mensagensRepository;
+
+    @Autowired
+    private ContatosRepository contatosRepository;
 
     public Mediadores criarMediador( MediadoresDTO mediadorDTO ){
 
@@ -64,6 +67,10 @@ public class MediadoresService {
         // Verifica se o usuário existe
         Mediadores mediador = mediadoresRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Usuário não encontrado para o ID: " + id));
+
+        // Remove todos os contatos relacionados ao mediador
+        contatosRepository.deleteAll(contatosRepository.findByUsuario(mediador));
+        contatosRepository.deleteAll(contatosRepository.findByContato(mediador));
 
         // Excluir todas as mensagens associadas ao usuário
         mensagensRepository.deleteByUsuario(mediador);

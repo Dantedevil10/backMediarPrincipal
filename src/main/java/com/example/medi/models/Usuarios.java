@@ -3,6 +3,7 @@ package com.example.medi.models;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -44,7 +45,7 @@ public class Usuarios extends ParticipanteBase {
     private String tipoDeConta = "USUARIO";
 
     // Relacionamento com processos abertos (que o usuário criou)
-    @OneToMany(mappedBy = "criador")  
+    @OneToMany(mappedBy = "criador" , cascade = CascadeType.REMOVE)  
     @JsonIgnoreProperties("criador")
     private List<Processos> processosAbertos;
 

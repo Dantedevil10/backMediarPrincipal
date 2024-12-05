@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.medi.dto.UsuariosDTO;
 
 import com.example.medi.models.Usuarios;
+import com.example.medi.repository.ContatosRepository;
 import com.example.medi.repository.MensagensRepository;
 import com.example.medi.repository.UsuariosRepository;
 import java.util.UUID;
@@ -20,6 +21,9 @@ public class UsuariosService {
 
     @Autowired
     private MensagensRepository mensagensRepository;
+
+    @Autowired
+    private ContatosRepository contatosRepository;
 
 
     public Usuarios criarUsuario( UsuariosDTO usuariosDTO){
@@ -59,6 +63,10 @@ public class UsuariosService {
         // Verifica se o usuário existe
         Usuarios usuario = usuariosRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Usuário não encontrado para o ID: " + id));
+
+        // Remove todos os contatos relacionados ao usuário
+        contatosRepository.deleteAll(contatosRepository.findByUsuario(usuario));
+        contatosRepository.deleteAll(contatosRepository.findByContato(usuario));
 
         // Excluir todas as mensagens associadas ao usuário
         mensagensRepository.deleteByUsuario(usuario);
